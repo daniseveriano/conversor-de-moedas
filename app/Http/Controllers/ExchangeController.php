@@ -34,6 +34,12 @@ class ExchangeController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'amount' => 'required',
+            'from' => 'required',
+            'to' => 'required',
+        ]);
+
         $event = new Event;
 
         $event->amount = $request->amount;

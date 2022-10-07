@@ -33,6 +33,7 @@
         </div>
         <input type="submit" value="Converter">
     </form>
+
     @foreach ($data as $dataItem)
         <ul>
             <li>Id: {{ $dataItem['id'] }}</li>

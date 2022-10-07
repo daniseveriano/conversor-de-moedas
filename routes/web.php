@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ExchangeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/login', [UserController::class, 'login'])->name('login.page');
+
+Route::post('/auth', [UserController::class, 'auth'])->name('auth.user');
 
 Route::get('/historic', [ExchangeController::class, 'index']);
 
