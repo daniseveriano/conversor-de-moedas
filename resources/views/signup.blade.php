@@ -32,7 +32,7 @@
     @if (session('danger'))
         <p>{{ session('danger') }}</p>
     @endif
-    <a href="/login">Login</a>
+    <p>Já possui uma conta? Faça seu <a href="/login">Login</a>!</p>
 </body>
 
 </html>

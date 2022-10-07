@@ -14,16 +14,14 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::middleware('auth')->group(function () {
+    Route::get('/', [ExchangeController::class, 'create']);
+    Route::get('/historic', [ExchangeController::class, 'index']);
+    Route::post('/exchange', [ExchangeController::class, 'store']);
+});
+
 Route::get('/signup', [UserController::class, 'signup'])->name('signup.page');
-
 Route::post('/register', [UserController::class, 'register'])->name('register.user');
-
 Route::get('/login', [UserController::class, 'login'])->name('login.page');
-
 Route::post('/auth', [UserController::class, 'auth'])->name('auth.user');
-
-Route::get('/historic', [ExchangeController::class, 'index']);
-
-Route::get('/', [ExchangeController::class, 'create']);
-
-Route::post('/exchange', [ExchangeController::class, 'store']);

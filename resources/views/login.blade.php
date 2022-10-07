@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <h1>Entrar</h1>
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -31,6 +32,7 @@
         <input type="password" id="password" name="password">
         <input type="submit" value="Entrar">
     </form>
+    <p>Não possui uma conta? <a href="/signup">Cadastre-se!</a></p>
 </body>
 
 </html>

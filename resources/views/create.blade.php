@@ -9,6 +9,9 @@
 </head>
 
 <body>
+    @if (Auth::check())
+    <h3>O usuário logado é {{Auth::user()->name}}</h3>    
+    @endif
     <form action="/exchange" method="POST" enctype="multipart/form-data">
         @csrf
         <div>
