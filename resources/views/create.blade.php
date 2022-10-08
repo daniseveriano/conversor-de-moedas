@@ -50,8 +50,19 @@
             <li>Moeda de Destino: {{ $dataItem['to'] }}</li>
             <li>Valor convertido: {{ $dataItem['amount'] }}</li>
             <li>Conversão: {{ $dataItem['result'] }}</li>
+            <form action="/dashboard/{{ $dataItem->id }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit">Deletar</button>
+            </form>
         </ul>
     @endforeach
+    @if (session('msg'))
+        <div class="alert alert-success alert-dismissible fade show position-fixed top-0 start-0" role="alert">
+            <strong>{{ session('msg') }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
 
     <a href="{{ route('logout') }}">Logout</a>
 </body>

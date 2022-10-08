@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [ExchangeController::class, 'create'])->name('create');
+    Route::delete('/dashboard/{id}', [ExchangeController::class, 'destroy']);
     Route::get('/show', [ExchangeController::class, 'show'])->name('show');
     Route::post('/exchange', [ExchangeController::class, 'store'])->name('store');
 });

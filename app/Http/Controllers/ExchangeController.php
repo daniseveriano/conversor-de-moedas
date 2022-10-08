@@ -38,13 +38,23 @@ class ExchangeController extends Controller
         $event = new Event;
 
         $event->amount = $response['query']['amount'];
-        $event->from = $response['query']['amount'];
+        $event->from = $response['query']['from'];
         $event->to = $response['query']['to'];
         $event->date = $response['date'];
         $event->result = $response['result'];
 
+        $user = auth()->user();
+        $event->user_id = $user->id;
+
         $event->save();
 
         return redirect('/show');
+    }
+
+    public function destroy($id)
+    {
+        Event::findOrFail($id)->delete();
+
+        return redirect('/dashboard')->with('msg', 'Evento excluído com sucesso');
     }
 }
