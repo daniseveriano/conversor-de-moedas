@@ -8,6 +8,11 @@ use App\User;
 
 class UserController extends Controller
 {
+    public function index()
+    {
+        return view('welcome');
+    }
+
     public function login()
     {
         return view('login');
@@ -26,7 +31,7 @@ class UserController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            return redirect('/');
+            return redirect('/dashboard');
         } else {
             return redirect()->back()->with('danger', 'E-mail ou senha inválida');
         }
@@ -62,5 +67,12 @@ class UserController extends Controller
         } else {
             return redirect()->back()->with('danger', 'E-mail já existe! Faça seu Login!');
         }
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+
+        return redirect('/');
     }
 }

@@ -15,9 +15,11 @@ class CreateExchangesTable extends Migration
     {
         Schema::create('exchanges', function (Blueprint $table) {
             $table->id();
+            $table->dateTime('date');
             $table->float('amount');
             $table->string('from');
             $table->string('to');
+            $table->float('result');
             $table->timestamps();
         });
     }

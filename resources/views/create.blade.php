@@ -10,16 +10,16 @@
 
 <body>
     @if (Auth::check())
-    <h3>O usuário logado é {{Auth::user()->name}}</h3>    
+        <h3>O usuário logado é {{ Auth::user()->name }}</h3>
     @endif
-    <form action="/exchange" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div>
             <label>Valor a converter:</label>
-            <input type="text" name="amount">
+            <input type="text" name="amount" required>
         </div>
         <div>
-            <label>Moeda a ser convertida:</label>
+            <label>Moeda de origem:</label>
             <select name="from">
                 <option value="brl" selected>BRL</option>
                 <option value="cad">CAD</option>
@@ -27,29 +27,33 @@
             </select>
         </div>
         <div>
-            <label>Moeda para a qual se deseja converter:</label>
+            <label>Moeda de destino:</label>
             <select name="to">
                 <option value="brl">BRL</option>
                 <option value="cad">CAD</option>
                 <option value="usd" selected>USD</option>
             </select>
         </div>
+        <div>
+            <label>Data de referência:</label>
+            <input type="date" name="date" required>
+        </div>
         <input type="submit" value="Converter">
     </form>
-
+    <br>
+    <h5>Histórico de Conversões</h5>
     @foreach ($data as $dataItem)
         <ul>
             <li>Id: {{ $dataItem['id'] }}</li>
-            <li>Valor convertido: {{ $dataItem['amount'] }}</li>
+            <li>Data: {{ $dataItem['created_at'] }}</li>
             <li>Moeda de Origem: {{ $dataItem['from'] }}</li>
             <li>Moeda de Destino: {{ $dataItem['to'] }}</li>
-            <li>Data: {{ $dataItem['created_at'] }}</li>
+            <li>Valor convertido: {{ $dataItem['amount'] }}</li>
+            <li>Conversão: {{ $dataItem['result'] }}</li>
         </ul>
     @endforeach
 
-    @if (count($data) > 0)
-        <a href="/historic">Histórico</a>
-    @endif
+    <a href="{{ route('logout') }}">Logout</a>
 </body>
 
 </html>

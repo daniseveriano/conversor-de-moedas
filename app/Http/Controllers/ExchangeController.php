@@ -8,21 +8,11 @@ use App\Event;
 
 class ExchangeController extends Controller
 {
-    public function index()
+    public function show()
     {
         $data = Event::all();
 
-        $request = Http::withHeaders([
-            'apikey' => 'Cxli09ooNUak5UE4TWc4PLogiW1rR3aB'
-        ])->get('https://api.apilayer.com/exchangerates_data/convert', [
-            'to' => $data[count($data) - 1]['to'],
-            'from' => $data[count($data) - 1]['from'],
-            'amount' => $data[count($data) - 1]['amount'],
-        ]);
-
-        $response = $request->json();
-
-        return view('api', ['response' => $response, 'data' => $data]);
+        return view('show', ['data' => $data]);
     }
 
     public function create()
@@ -34,14 +24,27 @@ class ExchangeController extends Controller
 
     public function store(Request $request)
     {
+        $response = Http::withHeaders([
+            'apikey' => '3AhYSbak48vM6LGnfUFtuD1SjOGew3WU'
+        ])->get('https://api.apilayer.com/exchangerates_data/convert', [
+            'to' => $request->to,
+            'from' => $request->from,
+            'amount' => $request->amount,
+            'date' => $request->date,
+        ]);
+
+        $response->json();
+
         $event = new Event;
 
-        $event->amount = $request->amount;
-        $event->from = $request->from;
-        $event->to = $request->to;
+        $event->amount = $response['query']['amount'];
+        $event->from = $response['query']['amount'];
+        $event->to = $response['query']['to'];
+        $event->date = $response['date'];
+        $event->result = $response['result'];
 
         $event->save();
 
-        return redirect('/historic');
+        return redirect('/show');
     }
 }

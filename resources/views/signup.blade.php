@@ -10,7 +10,7 @@
 
 <body>
     <h1>Cadastre-se</h1>
-    <form action="{{ route('register.user') }}" method="post">
+    <form action="{{ route('register') }}" method="post">
         @csrf
         <label for="name">Nome Completo</label>
         <input type="text" name="name" placeholder="Nome completo">
@@ -32,7 +32,7 @@
     @if (session('danger'))
         <p>{{ session('danger') }}</p>
     @endif
-    <p>Já possui uma conta? Faça seu <a href="/login">Login</a>!</p>
+    <p>Já possui uma conta? Faça seu <a href="{{ route('login') }}">Login</a>!</p>
 </body>
 
 </html>

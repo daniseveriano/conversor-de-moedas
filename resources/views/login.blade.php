@@ -24,7 +24,7 @@
         <p>{{session('danger')}}</p>
     @endif
     
-    <form action="{{ route('auth.user') }}" method="post">
+    <form action="{{ route('auth') }}" method="post">
         @csrf
         <label for="email">E-mail</label>
         <input type="email" id="name" name="email">
@@ -32,7 +32,7 @@
         <input type="password" id="password" name="password">
         <input type="submit" value="Entrar">
     </form>
-    <p>Não possui uma conta? <a href="/signup">Cadastre-se!</a></p>
+    <p>Não possui uma conta? <a href="{{ route('signup') }}">Cadastre-se!</a></p>
 </body>
 
 </html>

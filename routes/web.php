@@ -16,12 +16,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth')->group(function () {
-    Route::get('/', [ExchangeController::class, 'create']);
-    Route::get('/historic', [ExchangeController::class, 'index']);
-    Route::post('/exchange', [ExchangeController::class, 'store']);
+    Route::get('/dashboard', [ExchangeController::class, 'create'])->name('create');
+    Route::get('/show', [ExchangeController::class, 'show'])->name('show');
+    Route::post('/exchange', [ExchangeController::class, 'store'])->name('store');
 });
 
-Route::get('/signup', [UserController::class, 'signup'])->name('signup.page');
-Route::post('/register', [UserController::class, 'register'])->name('register.user');
-Route::get('/login', [UserController::class, 'login'])->name('login.page');
-Route::post('/auth', [UserController::class, 'auth'])->name('auth.user');
+Route::get('/', [UserController::class, 'index'])->name('index');
+Route::get('/signup', [UserController::class, 'signup'])->name('signup');
+Route::post('/register', [UserController::class, 'register'])->name('register');
+Route::get('/login', [UserController::class, 'login'])->name('login');
+Route::post('/auth', [UserController::class, 'auth'])->name('auth');
+Route::get('/logout', [UserController::class, 'logout'])->name('logout');
