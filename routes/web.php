@@ -20,6 +20,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/dashboard/{id}', [ExchangeController::class, 'destroy']);
     Route::get('/show', [ExchangeController::class, 'show'])->name('show');
     Route::post('/exchange', [ExchangeController::class, 'store'])->name('store');
+    Route::get('/user', [UserController::class, 'edit'])->name('edit');
+    Route::put('/user/update', [UserController::class, 'update']);
 });
 
 Route::get('/', [UserController::class, 'index'])->name('index');

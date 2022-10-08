@@ -69,6 +69,24 @@ class UserController extends Controller
         }
     }
 
+    public function edit()
+    {
+        return view('edit');
+    }
+
+    public function update(Request $request)
+    {
+        $user = User::where('id', 2);
+
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = bcrypt($request->password);
+
+            $user->update()->all();
+
+        return redirect('/dashboard')->with('msg', 'Usuário editado com sucesso');
+    }
+
     public function logout(Request $request)
     {
         Auth::logout();

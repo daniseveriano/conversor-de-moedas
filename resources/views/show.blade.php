@@ -10,9 +10,9 @@
 
 <body>
     <ul>
-        <li>Resultado: {{ $data[count($data) - 1]['result'] }}</li>
-        <li>Data: {{ $data[count($data) - 1]['created_at'] }}</li>
-        <li>Valor: {{ $data[count($data) - 1]['amount'] }}</li>
+        <li>Resultado: {{ 'R$ ' . number_format($data[count($data) - 1]['result'], 2, ',', '.') }}</li>
+        <li>Data: {{ $data[count($data) - 1]['created_at']->format('d/m/Y') }}</li>
+        <li>Valor: {{ 'R$ ' . number_format($data[count($data) - 1]['amount'], 2, ',', '.') }}</li>
         <li>Moeda de Origem: {{ $data[count($data) - 1]['from'] }}</li>
         <li>Moeda de Destino: {{ $data[count($data) - 1]['to'] }}</li>
     </ul>

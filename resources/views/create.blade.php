@@ -46,11 +46,11 @@
         @if ($dataItem['user_id'] == Auth::user()->id)
             <ul>
                 <li>Id: {{ $dataItem['id'] }}</li>
-                <li>Data: {{ $dataItem['created_at'] }}</li>
+                <li>Data: {{ $dataItem['created_at']->format('d/m/Y') }}</li>
                 <li>Moeda de Origem: {{ $dataItem['from'] }}</li>
                 <li>Moeda de Destino: {{ $dataItem['to'] }}</li>
-                <li>Valor convertido: {{ $dataItem['amount'] }}</li>
-                <li>Conversão: {{ $dataItem['result'] }}</li>
+                <li>Valor convertido: {{ 'R$ ' . number_format($dataItem['amount'], 2, ',', '.') }}</li>
+                <li>Conversão: {{ 'R$ ' . number_format($dataItem['result'], 2, ',', '.') }}</li>
                 <form action="/dashboard/{{ $dataItem->id }}" method="POST">
                     @csrf
                     @method('DELETE')
@@ -67,6 +67,7 @@
     @endif
     @auth
         <a href="{{ route('create') }}">Dashboard</a>
+        <a href="{{ route('edit') }}">Edite seus dados</a>
     @endauth
     <a href="{{ route('logout') }}">Logout</a>
 </body>

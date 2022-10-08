@@ -9,20 +9,21 @@
 </head>
 
 <body>
-    @if (Auth::check())
+    @auth
         <h3>O usuário logado é {{ Auth::user()->name }}</h3>
-    @endif
+    @endauth
     <p>Seja bem-vindo ao nosso sistema de conversão de moedas!</p>
     <p>Conversão entre BRL, CAD e USD em tempo real!</p>
     <p>Cadastre-se para ter acesso a todas as nossas funcionalidades!</p>
-    <a href="{{ route('login') }}">Login</a>
-    <a href="{{ route('signup') }}">Cadastro</a>
-    @if (Auth::check())
-    <a href="{{ route('create') }}">Dashboard</a>
+    @if (!Auth::check())
+        <a href="{{ route('login') }}">Login</a>
+        <a href="{{ route('signup') }}">Cadastro</a>
     @endif
-    @if (Auth::check())
-    <a href="{{ route('logout') }}">Logout</a>
-    @endif
+    @auth
+        <a href="{{ route('create') }}">Dashboard</a>
+        <a href="{{ route('edit') }}">Edite seus dados</a>
+        <a href="{{ route('logout') }}">Logout</a>
+    @endauth
 </body>
 
 </html>
