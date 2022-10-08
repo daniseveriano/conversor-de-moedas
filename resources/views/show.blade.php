@@ -17,6 +17,11 @@
         <li>Moeda de Destino: {{ $data[count($data) - 1]['to'] }}</li>
     </ul>
     <a href="{{ route('create') }}">Criar nova conversão</a>
+
+    @if (Auth::check())
+        <a href="{{ route('create') }}">Dashboard</a>
+    @endif
+    <a href="{{ route('logout') }}">Logout</a>
 </body>
 
 </html>

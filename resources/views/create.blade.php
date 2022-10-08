@@ -43,19 +43,21 @@
     <br>
     <h5>Histórico de Conversões</h5>
     @foreach ($data as $dataItem)
-        <ul>
-            <li>Id: {{ $dataItem['id'] }}</li>
-            <li>Data: {{ $dataItem['created_at'] }}</li>
-            <li>Moeda de Origem: {{ $dataItem['from'] }}</li>
-            <li>Moeda de Destino: {{ $dataItem['to'] }}</li>
-            <li>Valor convertido: {{ $dataItem['amount'] }}</li>
-            <li>Conversão: {{ $dataItem['result'] }}</li>
-            <form action="/dashboard/{{ $dataItem->id }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button type="submit">Deletar</button>
-            </form>
-        </ul>
+        @if ($dataItem['user_id'] == Auth::user()->id)
+            <ul>
+                <li>Id: {{ $dataItem['id'] }}</li>
+                <li>Data: {{ $dataItem['created_at'] }}</li>
+                <li>Moeda de Origem: {{ $dataItem['from'] }}</li>
+                <li>Moeda de Destino: {{ $dataItem['to'] }}</li>
+                <li>Valor convertido: {{ $dataItem['amount'] }}</li>
+                <li>Conversão: {{ $dataItem['result'] }}</li>
+                <form action="/dashboard/{{ $dataItem->id }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit">Deletar</button>
+                </form>
+            </ul>
+        @endif
     @endforeach
     @if (session('msg'))
         <div class="alert alert-success alert-dismissible fade show position-fixed top-0 start-0" role="alert">
@@ -63,7 +65,9 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
-
+    @auth
+        <a href="{{ route('create') }}">Dashboard</a>
+    @endauth
     <a href="{{ route('logout') }}">Logout</a>
 </body>
 
