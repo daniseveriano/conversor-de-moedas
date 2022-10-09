@@ -56,7 +56,7 @@
                         @if ($dataItem->user_id == Auth::user()->id)
                             <tr>
                                 <th scope="row">{{ $dataItem->id }}</th>
-                                <td>{{ $dataItem->created_at }}</td>
+                                <td>{{ date('d/m/Y', strtotime($dataItem->created_at)) }}</td>
                                 <td>{{ $dataItem->from }}</td>
                                 <td>{{ $dataItem->to }}</td>
                                 <td>{{ 'R$ ' . number_format($dataItem->amount, 2, ',', '.') }}</td>
