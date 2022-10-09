@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use App\Event;
 
@@ -17,7 +18,8 @@ class ExchangeController extends Controller
 
     public function create()
     {
-        $data = Event::all();
+        // $data = Event::all();
+        $data = DB::table('exchanges')->paginate(8);
 
         return view('create', ['data' => $data]);
     }
@@ -48,7 +50,7 @@ class ExchangeController extends Controller
 
         $event->save();
 
-        return redirect('/show');
+        // return redirect('/show');
     }
 
     public function destroy($id)
