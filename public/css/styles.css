@@ -12,7 +12,35 @@ body {
     color: var(--bs-info);
 }
 
+#banner {
+    background-image: linear-gradient(to left, transparent, #141414, #1414141c 250%), url("../img/banner.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    padding: 50px;
+    text-align: left;
+}
+
+#banner h1,
+#banner h5 {
+    color: var(--bs-white);
+    margin-bottom: 10px;
+    font-weight: 900;
+}
+
+#banner form {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.text-center h5  {
+    margin-top: 30px !important;
+    margin-bottom: 10px;
+    color: var(--bs-gray-600);
+}
+
 footer {
+    font-size: 15px;
     text-align: center;
     background-color: var(--bs-gray-600);
     color: var(--bs-white);
