@@ -1,0 +1,37 @@
+body {
+    min-height: 100vh;
+    padding-bottom: 100px;
+    position: relative;
+}
+
+.navbar-brand {
+    font-family: 'Secular One', sans-serif;
+}
+
+.nav-item a:hover {
+    color: var(--bs-info);
+}
+
+footer {
+    text-align: center;
+    background-color: var(--bs-gray-600);
+    color: var(--bs-white);
+    padding: 30px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin-bottom: 0;
+}
+
+footer a {
+    color: var(--bs-white);
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: var(--bs-info);
+    text-decoration: none;
+}
