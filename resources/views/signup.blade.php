@@ -41,7 +41,8 @@
             </div>
         </form>
         @if ($errors->any())
-            <div class="alert alert-danger alert-dismissible fade show position-absolute top-50 start-50 translate-middle">
+            <div
+                class="alert alert-danger alert-dismissible fade show position-absolute top-50 start-50 translate-middle">
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li style="list-style: none;">{{ $error }}</li>
@@ -51,7 +52,11 @@
             </div>
         @endif
         @if (session('danger'))
-            <p>{{ session('danger') }}</p>
+            <div
+                class="alert alert-danger alert-dismissible fade show position-absolute top-50 start-50 translate-middle">
+                <p>{{ session('danger') }}</p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
         @endif
         <p>Já possui uma conta? Faça seu <a href="{{ route('login') }}">Login</a>!</p>
     </section>
