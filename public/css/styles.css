@@ -39,6 +39,18 @@ body {
     color: var(--bs-gray-600);
 }
 
+.signup {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#box {
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 30px;
+}
+
 footer {
     font-size: 15px;
     text-align: center;
