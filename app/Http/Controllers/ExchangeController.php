@@ -18,8 +18,7 @@ class ExchangeController extends Controller
 
     public function create()
     {
-        // $data = Event::all();
-        $data = DB::table('exchanges')->paginate(8);
+        $data = DB::table('exchanges')->latest()->paginate(8);
 
         return view('create', ['data' => $data]);
     }
@@ -50,7 +49,7 @@ class ExchangeController extends Controller
 
         $event->save();
 
-        // return redirect('/show');
+        return redirect()->back();
     }
 
     public function destroy($id)

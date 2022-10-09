@@ -23,7 +23,7 @@
             @endif
             @auth
                 <div class="grid text-center">
-                    <h5>Faça uma conversão de moedas agora!</h5>
+                    <h5>Faça uma conversão agora!</h5>
                     <a type="button" class="btn btn-primary btn-lg" href="/dashboard">Ir para o Dashboard</a>
                     </p>
                 </div>

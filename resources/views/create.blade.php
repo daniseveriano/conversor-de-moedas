@@ -6,23 +6,23 @@
     <body>
         <div class="container-fluid mb-3">
             <form action="{{ route('store') }}" method="POST" enctype="multipart/form-data"
-                class="container text-center col-sm-4 mb-3">
+                style="display: flex; flex-direction: column; justify-content: center; padding: 20px 30% 0">
                 @csrf
-                <div>
-                    <label>Valor a converter:</label>
-                    <input type="text" name="amount" required>
+                <div class="form-floating col-md-12 mb-3">
+                    <input type="number" class="form-control" id="floatingInput" name="amount" placeholder="2.00" required>
+                    <label for="floatingInput">Valor a converter</label>
                 </div>
-                <div class="d-flex col-md-12">
-                    <div class="d-flex flex-row justify-content-center align-items-center col-md-6">
-                        <label for="inputState" class="form-label">Moeda de origem:</label>
+                <div class="d-flex" mb-3>
+                    <div class="d-flex flex-column" style="width: 50%">
+                        <label for="inputState" class="form-label">Moeda Origem</label>
                         <select id="inputState" class="form-select" name="from">
                             <option value="usd" selected>USD</option>
                             <option value="brl">BRL</option>
                             <option value="cad">CAD</option>
                         </select>
                     </div>
-                    <div class="d-flex flex-row justify-content-center align-items-center col-md-6">
-                        <label for="inputState" class="form-label">Moeda de destino:</label>
+                    <div class="d-flex flex-column" style="width: 50%">
+                        <label for="inputState" class="form-label">Moeda Destino</label>
                         <select id="inputState" class="form-select" name="to">
                             <option value="brl" selected>BRL</option>
                             <option value="cad">CAD</option>
@@ -30,14 +30,15 @@
                         </select>
                     </div>
                 </div>
-                <div>
-                    <label>Data de referência:</label>
-                    <input type="date" name="date" required>
+                <div style="margin-top: 15px;">
+                    <label for="exampleFormControlInput1" class="form-label" aria-placeholder="10/10/2022">Data de
+                        referência:</label>
+                    <input class="form-control" id="exampleFormControlInput1" type="date" name="date" required>
                 </div>
-                <input type="submit" value="Converter">
+                <button class="btn btn-primary btn-lg" type="submit" style="margin-top: 20px;">Converter</button>
             </form>
             <br>
-            <h5>Histórico de Conversões</h5>
+            <h5 style="margin-top: 20px;">Histórico de Conversões</h5>
             <table class="table text-center ">
                 <thead>
                     <tr>
