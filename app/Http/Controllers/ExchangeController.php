@@ -49,7 +49,8 @@ class ExchangeController extends Controller
 
         $event->save();
 
-        return redirect()->back();
+        // return redirect()->back();
+        return redirect('/show');
     }
 
     public function destroy($id)

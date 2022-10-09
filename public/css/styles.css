@@ -16,7 +16,6 @@ body {
     background-image: linear-gradient(to left, transparent, #141414, #1414141c 250%), url("../img/banner.jpg");
     background-size: cover;
     background-position: center;
-    height: 400px;
     padding: 50px;
     text-align: left;
 }

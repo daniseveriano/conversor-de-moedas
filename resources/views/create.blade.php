@@ -9,25 +9,27 @@
                 style="display: flex; flex-direction: column; justify-content: center; padding: 20px 30% 0">
                 @csrf
                 <div class="form-floating col-md-12 mb-3">
-                    <input type="number" class="form-control" id="floatingInput" name="amount" placeholder="2.00" required>
+                    <input type="text" class="form-control" id="floatingInput" name="amount" placeholder="2.00" required>
                     <label for="floatingInput">Valor a converter</label>
                 </div>
                 <div class="d-flex" mb-3>
-                    <div class="d-flex flex-column" style="width: 50%">
-                        <label for="inputState" class="form-label">Moeda Origem</label>
-                        <select id="inputState" class="form-select" name="from">
-                            <option value="usd" selected>USD</option>
-                            <option value="brl">BRL</option>
-                            <option value="cad">CAD</option>
+                    <div class="form-floating d-flex flex-column" style="width: 50%">
+                        <select id="floatingSelect" aria-label="Floating label select example" class="form-select"
+                            name="from">
+                            <option value="usd">Dólar Americano - USD</option>
+                            <option value="brl">Real Brasileiro - BRL</option>
+                            <option value="cad">Dólar Canadense - CAD</option>
                         </select>
+                        <label for="floatingSelect">Moeda de origem</label>
                     </div>
-                    <div class="d-flex flex-column" style="width: 50%">
-                        <label for="inputState" class="form-label">Moeda Destino</label>
-                        <select id="inputState" class="form-select" name="to">
-                            <option value="brl" selected>BRL</option>
-                            <option value="cad">CAD</option>
-                            <option value="usd">USD</option>
+                    <div class="form-floating d-flex flex-column" style="width: 50%">
+                        <select id="floatingSelect" aria-label="Floating label select example" class="form-select"
+                            name="to">
+                            <option value="brl">Real Brasileiro - BRL</option>
+                            <option value="cad">Dólar Canadense - CAD</option>
+                            <option value="usd">Dólar Americano - USD</option>
                         </select>
+                        <label for="floatingSelect">Moeda de destino</label>
                     </div>
                 </div>
                 <div style="margin-top: 15px;">
@@ -43,7 +45,8 @@
                 <thead>
                     <tr>
                         <th scope="col">Id</th>
-                        <th scope="col">Data:</th>
+                        <th scope="col">Data de Criação:</th>
+                        <th scope="col">Data de Referência:</th>
                         <th scope="col">Moeda de Origem:</th>
                         <th scope="col">Moeda de Destino:</th>
                         <th scope="col">Valor convertido:</th>
@@ -57,10 +60,11 @@
                             <tr>
                                 <th scope="row">{{ $dataItem->id }}</th>
                                 <td>{{ date('d/m/Y', strtotime($dataItem->created_at)) }}</td>
+                                <td>{{ date('d/m/Y', strtotime($dataItem->date)) }}</td>
                                 <td>{{ $dataItem->from }}</td>
                                 <td>{{ $dataItem->to }}</td>
-                                <td>{{ 'R$ ' . number_format($dataItem->amount, 2, ',', '.') }}</td>
-                                <td class="table-success">{{ 'R$ ' . number_format($dataItem->result, 2, ',', '.') }}</td>
+                                <td>{{ number_format($dataItem->amount, 2, ',', '.') }}</td>
+                                <td class="table-info">{{ number_format($dataItem->result, 2, ',', '.') }}</td>
                                 <td>
                                     <form action="/dashboard/{{ $dataItem->id }}" method="POST">
                                         @csrf
