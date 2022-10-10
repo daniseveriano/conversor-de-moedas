@@ -16,9 +16,12 @@ body {
     background-image: linear-gradient(to left, transparent, #141414, #1414141c 250%), url("../img/banner.jpg");
     background-size: cover;
     background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
     padding: 50px;
     min-height: 600px;
-    text-align: left;
 }
 
 #banner h1,
@@ -33,14 +36,21 @@ body {
     margin: 0 auto;
 }
 
-.text-center h5  {
+.background {
+    display: flex;
+    padding: 10% 10%;
+    background-image: linear-gradient(to left, transparent, #141414, #1414141c 250%), url("../img/background.jpg");
+    background-color: #14141434;
+}
+
+.text-center h5 {
     margin-top: 30px !important;
     margin-bottom: 10px;
     color: var(--bs-gray-600);
 }
 
 .column {
-    display:flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
 }

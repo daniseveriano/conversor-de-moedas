@@ -57,7 +57,7 @@
         <br>
         <h5 style="margin-top: 20px;">Histórico de Conversões</h5>
         <div class="table-responsive">
-            <table class="table table-hover text-center">
+            <table class="table table-hover text-center shadow rounded">
                 <thead>
                     <tr>
                         <th scope="col">Id</th>
