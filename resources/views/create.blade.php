@@ -8,7 +8,7 @@
             style="padding: 20px 30% 0">
             @csrf
             <div class="form-floating col-md-12 mb-3">
-                <input type="text" class="form-control" id="demo1" name="amount" required>
+                <input type="text" class="form-control" id="#currency" name="amount" data-affixes-stay="true" data-thousands="." data-decimal=","  required>
                 <label for="floatingInput">Valor</label>
             </div>
             <div class="d-flex" mb-3>
