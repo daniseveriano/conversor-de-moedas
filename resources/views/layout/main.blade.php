@@ -65,7 +65,7 @@
     </header>
     @yield('content')
     @if (session('msg'))
-        <div class="alert alert-success alert-dismissible fade show position-fixed top-0 start-0" role="alert">
+        <div class="alert alert-success alert-dismissible fade show position-absolute top-50 start-50 translate-middle" role="alert">
             <strong>{{ session('msg') }}</strong>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>

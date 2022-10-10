@@ -129,11 +129,7 @@
             </ul>
         </nav>
     </div>
-    @if (session('danger'))
-        <div class="alert alert-success alert-dismissible fade show position-absolute top-50 start-50 translate-middle">
-            <p>{{ session('msg') }}</p>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
 
 @endsection
+
+{{-- alert-dismissible fade show position-absolute top-50 start-50 translate-middle" --}}
