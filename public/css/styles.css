@@ -39,7 +39,7 @@ body {
     color: var(--bs-gray-600);
 }
 
-.signup {
+.column {
     display:flex;
     flex-direction: column;
     justify-content: center;
@@ -61,6 +61,13 @@ body {
 
 .empty img {
     width: 200px;
+}
+
+.centralized {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 footer {

@@ -67,7 +67,6 @@ class ExchangeController extends Controller
 
         $event->save();
 
-        // return redirect()->back();
         return redirect('/show');
     }
 

@@ -5,8 +5,8 @@
 
     <body>
         <div class="container-fluid mb-3">
-            <form action="{{ route('store') }}" method="POST" enctype="multipart/form-data"
-                style="display: flex; flex-direction: column; justify-content: center; padding: 20px 30% 0">
+            <form class="column" action="{{ route('store') }}" method="POST" enctype="multipart/form-data"
+                style="padding: 20px 30% 0">
                 @csrf
                 <div class="form-floating col-md-12 mb-3">
                     <input type="text" class="form-control" id="floatingInput" name="amount" placeholder="2.00" required>
@@ -49,7 +49,7 @@
                     </div>
                 </div>
                 <div style="margin-top: 15px;">
-                    <label for="exampleFormControlInput1" class="form-label" aria-placeholder="10/10/2022">Data de
+                    <label for="exampleFormControlInput1" class="form-label">Data de
                         referência:</label>
                     <input class="form-control" id="exampleFormControlInput1" type="date" name="date" required>
                 </div>
@@ -59,77 +59,69 @@
             <h5 style="margin-top: 20px;">Histórico de Conversões</h5>
             <div class="table-responsive">
                 <table class="table table-hover text-center">
-                    @if (count($data) > 0)
-                        <thead>
-                            <tr>
-                                <th scope="col">Id</th>
-                                <th scope="col">Data de Criação:</th>
-                                <th scope="col">Data de Referência:</th>
-                                <th scope="col">Moeda de Origem:</th>
-                                <th scope="col">Moeda de Destino:</th>
-                                <th scope="col">Valor convertido:</th>
-                                <th scope="col">Resultado da conversão:</th>
-                                <th scope="col"></th>
-                                <th scope="col"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($data as $dataItem)
-                                @if ($dataItem->user_id == Auth::user()->id)
-                                    <tr>
-                                        <th scope="row">{{ $dataItem->id }}</th>
-                                        <td>{{ date('d/m/Y', strtotime($dataItem->created_at)) }}</td>
-                                        <td>{{ date('d/m/Y', strtotime($dataItem->date)) }}</td>
-                                        <td>{{ $dataItem->from }}</td>
-                                        <td>{{ $dataItem->to }}</td>
-                                        <td>{{ number_format($dataItem->amount, 2, ',', '.') }}</td>
-                                        <td class="table-info">{{ number_format($dataItem->result, 2, ',', '.') }}</td>
-                                        <td>
-                                            <a href="/show" type="button" class="btn btn-secondary"
-                                                style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Ver detalhes</a>
-                                        </td>
-                                        <td>
-                                            <form action="/dashboard/{{ $dataItem->id }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="button" class="btn btn-danger"
-                                                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
-                                                    data-bs-toggle="modal" data-bs-target="#exampleModal">Deletar</button>
-                                                <div class="modal fade" id="exampleModal" tabindex="-1"
-                                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog modal-dialog-centered">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Aviso
-                                                                </h1>
-                                                                <button type="button" class="btn-close"
-                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                Tem certeza que deseja excluir este registro?
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary"
-                                                                    data-bs-dismiss="modal">Fechar</button>
-                                                                <button type="submit"
-                                                                    class="btn btn-danger">Deletar</button>
-                                                            </div>
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Data de Criação:</th>
+                            <th scope="col">Data de Referência:</th>
+                            <th scope="col">Moeda de Origem:</th>
+                            <th scope="col">Moeda de Destino:</th>
+                            <th scope="col">Valor convertido:</th>
+                            <th scope="col">Resultado da conversão:</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($data as $dataItem)
+                            @if ($dataItem->user_id == Auth::user()->id)
+                                <tr>
+                                    <th scope="row">{{ $dataItem->id }}</th>
+                                    <td>{{ date('d/m/Y', strtotime($dataItem->created_at)) }}</td>
+                                    <td>{{ date('d/m/Y', strtotime($dataItem->date)) }}</td>
+                                    <td>{{ $dataItem->from }}</td>
+                                    <td>{{ $dataItem->to }}</td>
+                                    <td>{{ number_format($dataItem->amount, 2, ',', '.') }}</td>
+                                    <td class="table-info">{{ number_format($dataItem->result, 2, ',', '.') }}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-secondary"
+                                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                            Ver detalhes</button>
+                                    </td>
+                                    <td>
+                                        <form action="/dashboard/{{ $dataItem->id }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="button" class="btn btn-danger"
+                                                style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal">Deletar</button>
+                                            <div class="modal fade" id="exampleModal" tabindex="-1"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Aviso
+                                                            </h1>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Tem certeza que deseja excluir este registro?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">Fechar</button>
+                                                            <button type="submit" class="btn btn-danger">Deletar</button>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endif
-                            @endforeach
-                        </tbody>
-                    @endif
-                    @if (count($data) === 0)
-                        <div class="empty">
-                            <p>Nenhum dado a ser exibido</p>
-                            <img src="./img/glass.png" alt="">
-                        </div>
-                    @endif
+                                            </div>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endif
+                        @endforeach
+                    </tbody>
                 </table>
             </div>
             <nav aria-label="Page navigation example">
