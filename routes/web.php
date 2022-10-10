@@ -21,7 +21,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/show', [ExchangeController::class, 'show'])->name('show');
     Route::get('/show/{id}', [ExchangeController::class, 'details']);
     Route::post('/exchange', [ExchangeController::class, 'store'])->name('store');
-    Route::get('/user', [UserController::class, 'edit'])->name('edit');
+    Route::get('/user/{id}/edit', [UserController::class, 'edit'])->name('edit');
+    Route::put('/user/{id}', [UserController::class, 'update'])->name('update');
 });
 
 Route::get('/', [UserController::class, 'index'])->name('index');

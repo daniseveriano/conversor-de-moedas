@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 
-
 class UserController extends Controller
 {
     public function index()
@@ -70,9 +69,12 @@ class UserController extends Controller
         }
     }
 
-    public function edit()
+    public function edit($id)
     {
-        return view('edit');
+        if(!$user = User::find($id))
+        return redirect()->route('create');
+
+        return view('edit', compact('user'));
     }
 
     public function logout(Request $request)
@@ -82,5 +84,20 @@ class UserController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/');
+    }
+
+    public function update(Request $request, $id)
+    {
+        if(!$user = User::find($id))
+        return redirect()->route('create');
+
+        $data = $request->only('name', 'email');
+        if ($request->password) {
+            $data['password'] = bcrypt($request->password);
+        }
+
+        $user->update($data);
+
+        return redirect()->route('create');
     }
 }

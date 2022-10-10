@@ -56,6 +56,7 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="{{ route('logout') }}">Logout</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('edit', Auth::user()->id) }}">Edite seu cadastro</a></li>
                                 </ul>
                             @endauth
                     </ul>
