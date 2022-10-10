@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-
 @extends('layout.main')
 @section('title', 'Resultado')
 @section('header')
@@ -8,8 +5,6 @@
 
 
     @if ($data[count($data) - 1]->user_id == Auth::user()->id)
-
-        <body>
             <div class="row" style="display: flex; background-color: rgba(128, 128, 128, 0.295); padding: 10% 10%;">
                 <div class="col-sm-6">
                     <div class="card">
@@ -134,7 +129,6 @@
                     </p>
                 </div>
             </div>
-        </body>
     @else
         <div class="empty">
             <p>Nenhum dado a ser exibido</p>

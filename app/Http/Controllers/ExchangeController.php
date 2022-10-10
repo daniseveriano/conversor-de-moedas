@@ -20,7 +20,7 @@ class ExchangeController extends Controller
     {
         $data = DB::table('exchanges')->latest()->paginate(8);
 
-        return view('create', ['data' => $data]);
+        return view('create', ['data' => $data, 'info' => $data]);
     }
 
     public function store(Request $request)
@@ -68,6 +68,13 @@ class ExchangeController extends Controller
         $event->save();
 
         return redirect('/show');
+    }
+
+    public function details($id)
+    {
+        $data = Event::where('id', $id)->First();
+
+        return view('details', ['data' => $data]);
     }
 
     public function destroy($id)

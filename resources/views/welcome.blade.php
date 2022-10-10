@@ -3,7 +3,7 @@
 @section('header')
 @section('content')
 
-    <body class="col-md-12">
+    <div class="col-md-12">
         <section>
             <div id="banner" class="col-md-12">
                 <h1>Taxa de câmbio em tempo real</h1>
@@ -29,5 +29,5 @@
                 </p>
             </div>
         @endauth
-    </body>
+    </div>
 @endsection
