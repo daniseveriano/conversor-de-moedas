@@ -37,7 +37,7 @@ class ExchangeController extends Controller
         $latest = Http::withHeaders([
             'apikey' => '3AhYSbak48vM6LGnfUFtuD1SjOGew3WU'
         ])->get('https://api.apilayer.com/exchangerates_data/latest', [
-            'symbols' => 'brl,usd,cad',
+            'symbols' => 'brl,usd,cad,eur,gbp,jpy,aud,chf,cny,ars,try',
             'base' => $request->from,
         ]);
 
@@ -53,6 +53,14 @@ class ExchangeController extends Controller
         $event->latest_brl = $latest['rates']['BRL'];
         $event->latest_usd = $latest['rates']['USD'];
         $event->latest_cad = $latest['rates']['CAD'];
+        $event->latest_eur = $latest['rates']['EUR'];
+        $event->latest_gbp = $latest['rates']['GBP'];
+        $event->latest_jpy = $latest['rates']['JPY'];
+        $event->latest_aud = $latest['rates']['AUD'];
+        $event->latest_chf = $latest['rates']['CHF'];
+        $event->latest_cnf = $latest['rates']['CNY'];
+        $event->latest_ars = $latest['rates']['ARS'];
+        $event->latest_try = $latest['rates']['TRY'];
 
         $user = auth()->user();
         $event->user_id = $user->id;

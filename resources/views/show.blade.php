@@ -27,6 +27,14 @@
                             <td class="fs-2">{{ $data[count($data) - 1]['to'] }}</td>
                         <tr>
                         <tr>
+                            <th scope="col">Valor Original:</th>
+                            <th scope="col">Valor Convertido</th>
+                        </tr>
+                        <tr>
+                            <td class="fs-2">{{ number_format($data[count($data) - 1]['amount'], 2, ',', '.') }}</td>
+                            <td class="fs-2">{{ number_format($data[count($data) - 1]['result'], 2, ',', '.') }}</td>
+                        <tr>
+                        <tr>
                             <th scope="col">Data de Criação:</th>
                             <th scope="col">Data de Referência:</th>
                         </tr>
@@ -50,18 +58,68 @@
                                     style="color: red">{{ $data[count($data) - 1]['from'] }}</strong></th>
                             <div>
                         <tr>
+                        <tr>
+                            <td class="fs-5" style="text-align: left">Real Brasileiro - BRL</td>
+                            <td class="fs-5 fw-bold">{{ number_format($data[count($data) - 1]['latest_brl'], 2, ',', '.') }}
+                            </td>
+                        <tr>
                             <td class="fs-5" style="text-align: left">Dólar Americano - USD</td>
-                            <td class="fs-5 fw-bold">{{ number_format($data[count($data) - 1]['latest_usd'], 2, ',', '.') }}
+                            <td class="fs-5 fw-bold">
+                                {{ number_format($data[count($data) - 1]['latest_usd'], 2, ',', '.') }}
                             </td>
                         <tr>
                         <tr>
                             <td class="fs-5" style="text-align: left">Dólar Canadense - CAD</td>
-                            <td class="fs-5 fw-bold">{{ number_format($data[count($data) - 1]['latest_cad'], 2, ',', '.') }}
+                            <td class="fs-5 fw-bold">
+                                {{ number_format($data[count($data) - 1]['latest_cad'], 2, ',', '.') }}
                             </td>
                         <tr>
                         <tr>
-                            <td class="fs-5" style="text-align: left">Real Brasileiro - BRL</td>
-                            <td class="fs-5 fw-bold">{{ number_format($data[count($data) - 1]['latest_brl'], 2, ',', '.') }}
+                            <td class="fs-5" style="text-align: left">Euro - EUR</td>
+                            <td class="fs-5 fw-bold">
+                                {{ number_format($data[count($data) - 1]['latest_eur'], 2, ',', '.') }}
+                            </td>
+                        <tr>
+                        <tr>
+                            <td class="fs-5" style="text-align: left">Libras Esterlinas - GBP</td>
+                            <td class="fs-5 fw-bold">
+                                {{ number_format($data[count($data) - 1]['latest_gbp'], 2, ',', '.') }}
+                            </td>
+                        <tr>
+                        <tr>
+                            <td class="fs-5" style="text-align: left">Iene Japonês - JPY</td>
+                            <td class="fs-5 fw-bold">
+                                {{ number_format($data[count($data) - 1]['latest_jpy'], 2, ',', '.') }}
+                            </td>
+                        <tr>
+                        <tr>
+                            <td class="fs-5" style="text-align: left">Dólar Australiano - AUD</td>
+                            <td class="fs-5 fw-bold">
+                                {{ number_format($data[count($data) - 1]['latest_aud'], 2, ',', '.') }}
+                            </td>
+                        <tr>
+                        <tr>
+                            <td class="fs-5" style="text-align: left">Franco Suíço - CHF</td>
+                            <td class="fs-5 fw-bold">
+                                {{ number_format($data[count($data) - 1]['latest_chf'], 2, ',', '.') }}
+                            </td>
+                        <tr>
+                        <tr>
+                            <td class="fs-5" style="text-align: left">Yuan Chinês - CNY</td>
+                            <td class="fs-5 fw-bold">
+                                {{ number_format($data[count($data) - 1]['latest_cnf'], 2, ',', '.') }}
+                            </td>
+                        <tr>
+                        <tr>
+                            <td class="fs-5" style="text-align: left">Peso Argentino - ARS</td>
+                            <td class="fs-5 fw-bold">
+                                {{ number_format($data[count($data) - 1]['latest_ars'], 2, ',', '.') }}
+                            </td>
+                        <tr>
+                        <tr>
+                            <td class="fs-5" style="text-align: left">Lira Turca - TRY</td>
+                            <td class="fs-5 fw-bold">
+                                {{ number_format($data[count($data) - 1]['latest_try'], 2, ',', '.') }}
                             </td>
                         <tr>
                     </table>
