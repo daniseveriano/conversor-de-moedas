@@ -55,8 +55,9 @@
                                     Olá, {{ Auth::user()->name }}!
                                 </a>
                                 <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{{ route('edit', Auth::user()->id) }}">Edite seu
+                                            cadastro</a></li>
                                     <li><a class="dropdown-item" href="{{ route('logout') }}">Logout</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('edit', Auth::user()->id) }}">Edite seu cadastro</a></li>
                                 </ul>
                             @endauth
                     </ul>
@@ -66,7 +67,8 @@
     </header>
     @yield('content')
     @if (session('msg'))
-        <div class="alert alert-success alert-dismissible fade show position-absolute top-50 start-50 translate-middle" role="alert">
+        <div class="alert alert-success alert-dismissible fade show position-absolute top-50 start-50 translate-middle"
+            role="alert">
             <strong>{{ session('msg') }}</strong>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
