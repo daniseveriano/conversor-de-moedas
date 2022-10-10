@@ -19,7 +19,7 @@
 </head>
 
 <body class="column">
-    <section class="container text-center col-sm-4 mb-3" id="box">
+    <section class="container text-center col-sm-4 mb-3 shadow-lg rounded" id="box">
         <h1 class="mb-3">Entrar</h1>
         <form action="{{ route('auth') }}" method="POST" class="column justify-content-md-center mb-3" novalidate>
             @csrf

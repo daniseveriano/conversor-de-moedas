@@ -3,7 +3,7 @@
 @section('header')
 @section('content')
 
-    <div class="row" style="display: flex; background-color: rgba(128, 128, 128, 0.295); padding: 10% 10%;">
+    <div class="background row">
         <div class="col-sm-6">
             <div class="card">
                 <table class="card-body table text-center"
