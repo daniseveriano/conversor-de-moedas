@@ -91,6 +91,14 @@ class UserController extends Controller
         if(!$user = User::find($id))
         return redirect()->route('create');
 
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+        ], [
+            'name.required' => "Nome é obrigatório",
+            'email.required' => 'E-mail é obrigatório',
+        ]);
+
         $data = $request->only('name', 'email');
         if ($request->password) {
             $data['password'] = bcrypt($request->password);

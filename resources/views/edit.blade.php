@@ -26,14 +26,24 @@
             @method('PUT')
             @csrf
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingPassword" name="name"
+                <input type="text" class="form-control @error('name') is-invalid @enderror" id="floatingPassword" name="name"
                     value="{{ $user->name }}" required>
                 <label for="floatingPassword">Digite seu nome</label>
+                @if ($errors->has('name'))
+                    <span class="invalid-feedback">
+                        <strong>{{ $errors->first('name') }}</strong>
+                    </span>                    
+                @endif
             </div>
             <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="floatingInput" name="email" value="{{ $user->email }}"
+                <input type="email" class="form-control @error('email') is-invalid @enderror" id="floatingInput" name="email" value="{{ $user->email }}"
                     required>
                 <label for="floatingInput">Digite seu e-mail</label>
+                @if ($errors->has('email'))
+                    <span class="invalid-feedback">
+                        <strong>{{ $errors->first('email') }}</strong>
+                    </span>                    
+                @endif
             </div>
             <div class="form-floating mb-3">
                 <input type="password" class="form-control" id="floatingPassword" name="password" required>
@@ -63,6 +73,15 @@
                 </div>
             </div>
         </form>
+        @if ($errors->any())
+            <div
+                class="alert alert-danger alert-dismissible fade show position-absolute top-50 start-50 translate-middle">
+                <ul>
+                    <li style="list-style: none;">Verifique e corrija todos os erros em destaque</li>
+                </ul>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
     </section>
 </body>
 
